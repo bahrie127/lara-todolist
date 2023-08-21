@@ -4,8 +4,15 @@ working create view
 
 @section('title', 'Add Task')
 
+@section('styles')
+    <style>
+        .error-message {
+            color: red;
+            font-size: 0, 8rem;
+        }
+    </style>
 @section('content')
-    {{ $errors }}
+
     <form method="POST" action="{{ route('tasks.store') }}">
 
         @csrf
@@ -14,6 +21,9 @@ working create view
                 Title
             </label>
             <input type="text" name="title" id="title">
+            @error('title')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
         </div>
 
         <div>
@@ -21,6 +31,9 @@ working create view
                 Description
             </label>
             <textarea name="description" id="description"> </textarea>
+            @error('description')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
         </div>
 
         <div>
@@ -28,6 +41,9 @@ working create view
                 Long Description
             </label>
             <textarea name="long_description" id="long_description"> </textarea>
+            @error('long_description')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
         </div>
 
         <div>
