@@ -1,5 +1,3 @@
-working create view
-@
 @extends('layouts.app')
 
 @section('title', isset($task) ? 'Edit Task' : 'Add Task')

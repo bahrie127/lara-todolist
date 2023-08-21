@@ -1,5 +1,3 @@
-working create view
-@
 @extends('layouts.app')
 
 
