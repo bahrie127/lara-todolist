@@ -29,7 +29,7 @@ Route::get('/tasks', function () {
     return view(
         'index',
         [
-            'tasks' => ModelsTask::latest()->get(),
+            'tasks' => ModelsTask::latest()->paginate(5),
         ]
     );
 })->name('tasks.index');
