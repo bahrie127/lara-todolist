@@ -2,6 +2,7 @@
 
 use App\Http\Requests\TaskRequest;
 use App\Models\Task as ModelsTask;
+use Illuminate\Console\View\Components\Task;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Route;
@@ -83,6 +84,12 @@ Route::put('/tasks/{task}', function (ModelsTask $task, TaskRequest $request) {
         ->with('success', 'Task updated successfully');
 })->name('tasks.update');
 
+
+Route::delete('/task/{task}', function (ModelsTask $task) {
+    $task->delete();
+    return redirect()->route('tasks.index')
+        ->with('success', 'Task deleted successfully');
+})->name('tasks.destroy');
 // Route::get('/sss', function () {
 //     return 'Hello';
 // })->name('hello');
