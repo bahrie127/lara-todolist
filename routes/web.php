@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Task as ModelsTask;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Expr\FuncCall;
@@ -82,6 +83,9 @@ Route::get('/tasks', function () use ($tasks) {
     );
 })->name('tasks.index');
 
+Route::view('/tasks/create', 'create')
+    ->name('tasks.create');
+
 Route::get('/tasks/{id}', function ($id) use ($tasks) {
     // $task = collect($tasks)->firstWhere('id', $id);
     // if (!$task) {
@@ -92,6 +96,10 @@ Route::get('/tasks/{id}', function ($id) use ($tasks) {
 
     return view('show', ['task' => $task]);
 })->name('tasks.show');
+
+Route::post('/tasks', function (Request $request) {
+    dd($request->all());
+})->name('tasks.store');
 
 // Route::get('/sss', function () {
 //     return 'Hello';
